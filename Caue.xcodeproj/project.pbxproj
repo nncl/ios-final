@@ -13,6 +13,7 @@
 		ACC647511E9598A5000B0FF8 /* Caue.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ACC6474F1E9598A5000B0FF8 /* Caue.xcdatamodeld */; };
 		ACC647531E9598A5000B0FF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACC647521E9598A5000B0FF8 /* Assets.xcassets */; };
 		ACC647561E9598A5000B0FF8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACC647541E9598A5000B0FF8 /* LaunchScreen.storyboard */; };
+		ACC647821E95BBB8000B0FF8 /* ProductsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC647811E95BBB8000B0FF8 /* ProductsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		ACC647521E9598A5000B0FF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ACC647551E9598A5000B0FF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ACC647571E9598A5000B0FF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACC647811E95BBB8000B0FF8 /* ProductsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +42,7 @@
 		ACC6473C1E9598A4000B0FF8 = {
 			isa = PBXGroup;
 			children = (
+				ACC647811E95BBB8000B0FF8 /* ProductsTableViewController.swift */,
 				ACC647471E9598A4000B0FF8 /* Caue */,
 				ACC647461E9598A4000B0FF8 /* Products */,
 			);
@@ -140,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACC647511E9598A5000B0FF8 /* Caue.xcdatamodeld in Sources */,
+				ACC647821E95BBB8000B0FF8 /* ProductsTableViewController.swift in Sources */,
 				ACC6474B1E9598A5000B0FF8 /* ViewController.swift in Sources */,
 				ACC647491E9598A5000B0FF8 /* AppDelegate.swift in Sources */,
 			);
