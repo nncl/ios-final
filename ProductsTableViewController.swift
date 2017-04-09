@@ -9,31 +9,27 @@
 import UIKit
 
 class ProductsTableViewController: UITableViewController {
+    
+    // MARK: - Variables
+    var label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 22))
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        label.text = "Sua lista está vazia!"
+        label.textAlignment = .center
+        
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        
+        // Show label
+        tableView.backgroundView = label
+        
+        // TODO Populate table
+        
         return 0
     }
 

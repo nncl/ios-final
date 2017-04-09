@@ -211,7 +211,7 @@
         <scene sceneID="cpV-Po-gtT">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="t9g-vy-b9D" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Compras" selectedImage="cart" id="8zT-wY-SaK"/>
+                    <tabBarItem key="tabBarItem" title="Compras" image="cart" id="8zT-wY-SaK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="p82-vQ-3mV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -247,7 +247,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="cart" width="50" height="35"/>
+        <image name="cart" width="25" height="25"/>
         <image name="gift" width="200" height="200"/>
     </resources>
 </document>
