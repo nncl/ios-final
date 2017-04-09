@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KoL-Ym-1u8" id="Iqw-2X-jDF">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -58,7 +58,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mS6-gb-wNK" id="FDx-RY-Yr2">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -98,6 +98,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="9Au-Mn-FKp" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="6ZZ-Et-LYt">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
@@ -114,7 +115,7 @@
         <scene sceneID="cpV-Po-gtT">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="t9g-vy-b9D" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Compras" id="8zT-wY-SaK"/>
+                    <tabBarItem key="tabBarItem" title="Compras" selectedImage="cart" id="8zT-wY-SaK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="p82-vQ-3mV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -149,4 +150,7 @@
             <point key="canvasLocation" x="379" y="911"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cart" width="50" height="35"/>
+    </resources>
 </document>
