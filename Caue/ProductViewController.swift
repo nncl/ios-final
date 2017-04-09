@@ -9,7 +9,15 @@
 import UIKit
 
 class ProductViewController: UIViewController {
+    
+    // MARK: - Variables
+    
+    @IBOutlet weak var tfName: UITextField!
+    @IBOutlet weak var ivImage: UIImageView!
+    @IBOutlet weak var tfPrice: UITextField!
+    @IBOutlet weak var swCard: UISwitch!
 
+    // MARK: - Functions/Methods
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -21,5 +29,9 @@ class ProductViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.becomeFirstResponder()
     }
+    
+    @IBAction func doSaveProduct(_ sender: UIButton) {
+    }
+    
 
 }
