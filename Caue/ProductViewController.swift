@@ -14,8 +14,12 @@ class ProductViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    override func becomeFirstResponder() -> Bool {
+    override var canBecomeFirstResponder: Bool {
         return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.becomeFirstResponder()
     }
 
 }
