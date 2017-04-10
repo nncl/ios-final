@@ -153,6 +153,9 @@
                                 <state key="normal" title="Cadastrar">
                                     <color key="titleColor" red="0.961209681749154" green="0.96182587671721453" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="doSaveProduct:" destination="ohV-cV-tbM" eventType="touchUpInside" id="PY1-Hj-UGH"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -183,6 +186,12 @@
                             <constraint firstItem="58k-Cu-wIC" firstAttribute="leading" secondItem="vMM-37-y9G" secondAttribute="trailing" constant="12" id="xnU-Wj-5n1"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="ivImage" destination="Bal-LS-M0J" id="7Fn-hq-AxE"/>
+                        <outlet property="swCard" destination="gCf-SJ-mvz" id="yaJ-v4-YcL"/>
+                        <outlet property="tfName" destination="SPm-Tb-yPr" id="4MF-1c-izj"/>
+                        <outlet property="tfPrice" destination="5fo-Ms-y5A" id="SFw-iJ-HWN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oFL-5h-ddv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

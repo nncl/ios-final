@@ -30,8 +30,38 @@ class ProductViewController: UIViewController {
         self.becomeFirstResponder()
     }
     
+    // TODO Finish save
     @IBAction func doSaveProduct(_ sender: UIButton) {
+        
+        // Validate fields
+        if (tfName.text?.isEmpty ?? true || tfPrice.text?.isEmpty ?? true) {
+            doShowError(title: "Erro", message: "Todos os campos são obrigatórios")
+        } else {
+            // TODO Save product
+        }
     }
+    
+    func doShowError(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: "\(message)", preferredStyle: UIAlertControllerStyle.alert)
+        
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        
+        alert.addAction(action)
+        
+        self.present(alert, animated: true)
+    }
+    
+    /*
+     * Action sheet
+     
+     let alert = UIAlertController(title: "Do something", message: "With this", preferredStyle: .actionSheet)
+     alert.addAction(UIAlertAction(title: "A thing", style: .default) { action in
+     // perhaps use action.title here
+     })
+     
+     self.present(alert, animated: true)
+
+     */
     
 
 }
