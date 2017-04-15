@@ -30,6 +30,12 @@ class ProductViewController: UIViewController {
         self.becomeFirstResponder()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? StatesViewController {
+            // TODO
+        }
+    }
+    
     // TODO Finish save
     @IBAction func doSaveProduct(_ sender: UIButton) {
         

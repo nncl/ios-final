@@ -18,6 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KoL-Ym-1u8">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
@@ -117,6 +118,9 @@
                                     <constraint firstAttribute="height" constant="22" id="7MV-Hx-Mj7"/>
                                     <constraint firstAttribute="width" constant="22" id="gvG-cy-Shn"/>
                                 </constraints>
+                                <connections>
+                                    <segue destination="xbQ-7r-Ekb" kind="presentation" id="6SK-oU-uYv"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Estado da Compra" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vMM-37-y9G">
                                 <rect key="frame" x="16" y="318" width="254" height="30"/>
@@ -253,6 +257,75 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yks-Af-cDT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="379" y="911"/>
+        </scene>
+        <!--States View Controller-->
+        <scene sceneID="1y3-zz-3Px">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7QV-Ng-VER" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="xbQ-7r-Ekb" customClass="StatesViewController" customModule="Caue" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gd6-lY-ekt"/>
+                        <viewControllerLayoutGuide type="bottom" id="bmP-rU-4pa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qnk-0d-mKq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="O4b-Fn-9f0">
+                                <rect key="frame" x="0.0" y="64" width="320" height="505"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="xiG-YI-eAT" style="IBUITableViewCellStyleDefault" id="mSI-eu-RKe">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mSI-eu-RKe" id="fTT-JE-d8d">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xiG-YI-eAT">
+                                                    <rect key="frame" x="15" y="0.0" width="290" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="xbQ-7r-Ekb" id="bVS-yt-ly5"/>
+                                    <outlet property="delegate" destination="xbQ-7r-Ekb" id="oZU-lP-rPD"/>
+                                </connections>
+                            </tableView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xFV-Ut-DLk">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Estados" id="Ahr-Kf-HZ4">
+                                        <barButtonItem key="leftBarButtonItem" title="Fechar" id="Vgw-Fy-stJ">
+                                            <connections>
+                                                <action selector="close:" destination="xbQ-7r-Ekb" id="pfI-i6-dsi"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Buh-ml-uYv">
+                                            <connections>
+                                                <action selector="add:" destination="xbQ-7r-Ekb" id="aNt-KN-fB0"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="O4b-Fn-9f0" id="CDD-iQ-KzS"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="3066" y="242"/>
         </scene>
     </scenes>
     <resources>
