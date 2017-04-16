@@ -39,7 +39,8 @@ class ProductViewController: UIViewController {
         
         if product != nil {
             if let states = product.states {
-                // tfState.text = "\(states.map({($0 as! State)}))"
+                let arr = states.allObjects
+                tfState.text = arr.map({($0 as! State).name!}).joined(separator: " | ")
             }
         }
     }
@@ -58,7 +59,6 @@ class ProductViewController: UIViewController {
             product = Product(context: context)
         }
         vc.product = product
-        
     }
     
     // TODO Finish save

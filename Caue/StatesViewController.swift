@@ -23,7 +23,7 @@ class StatesViewController: UIViewController {
         showAlert(type: .add, state: nil)
     }
     
-    @IBAction func close(_ sender: Any) {
+    @IBAction func close(_ sender: Any?) {
         dismiss(animated: true, completion: nil)
     }
     
@@ -93,17 +93,9 @@ extension StatesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let state = dataSource[indexPath.row]
-        let cell = tableView.cellForRow(at: indexPath)
-        
-        if cell?.accessoryType == .none {
-            cell?.accessoryType = .checkmark
-            product.addToStates(state)
-        } else {
-            cell?.accessoryType = .none
-            product.removeFromStates(state)
-        }
-        
-        tableView.deselectRow(at: indexPath, animated: false)
+        product.states = nil
+        product.addToStates(state)
+        close(nil)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
