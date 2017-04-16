@@ -111,4 +111,29 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Excluir") { (action: UITableViewRowAction, indexPath: IndexPath) in
+            let state = self.dataSource[indexPath.row]
+            self.context.delete(state)
+            do {
+                try self.context.save()
+                self.dataSource.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        
+        let editAction = UITableViewRowAction(style: .normal, title: "Editar") { (action: UITableViewRowAction, indexPath: IndexPath) in
+            let state = self.dataSource[indexPath.row]
+            tableView.setEditing(false, animated: true)
+            self.showAlert(type: .edit, state: state)
+        }
+        
+        editAction.backgroundColor = .blue
+        return [editAction, deleteAction]
+        
+    }
 }
