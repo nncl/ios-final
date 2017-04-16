@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0D3165901E9ABDB000CE9F72 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D31658F1E9ABDB000CE9F72 /* ProductViewController.swift */; };
 		0D7C5B0F1EA3E6A7001C1EA1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7C5B0E1EA3E6A7001C1EA1 /* SettingsViewController.swift */; };
+		0D7C5B131EA41C10001C1EA1 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0D7C5B121EA41C10001C1EA1 /* Settings.bundle */; };
 		0DF059861EA2BD4600B98476 /* StatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF059851EA2BD4600B98476 /* StatesViewController.swift */; };
 		0DF059881EA2F70300B98476 /* UIViewController+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF059871EA2F70300B98476 /* UIViewController+CoreData.swift */; };
 		ACC647491E9598A5000B0FF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC647481E9598A5000B0FF8 /* AppDelegate.swift */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		0D31658F1E9ABDB000CE9F72 /* ProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		0D7C5B0E1EA3E6A7001C1EA1 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		0D7C5B121EA41C10001C1EA1 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		0DF059851EA2BD4600B98476 /* StatesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatesViewController.swift; sourceTree = "<group>"; };
 		0DF059871EA2F70300B98476 /* UIViewController+CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+CoreData.swift"; sourceTree = "<group>"; };
 		ACC647451E9598A4000B0FF8 /* Caue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Caue.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,6 +52,7 @@
 		ACC6473C1E9598A4000B0FF8 = {
 			isa = PBXGroup;
 			children = (
+				0D7C5B121EA41C10001C1EA1 /* Settings.bundle */,
 				ACC647811E95BBB8000B0FF8 /* ProductsTableViewController.swift */,
 				ACC647471E9598A4000B0FF8 /* Caue */,
 				ACC647461E9598A4000B0FF8 /* Products */,
@@ -141,6 +144,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D7C5B131EA41C10001C1EA1 /* Settings.bundle in Resources */,
 				ACC647561E9598A5000B0FF8 /* LaunchScreen.storyboard in Resources */,
 				ACC647531E9598A5000B0FF8 /* Assets.xcassets in Resources */,
 				ACC6474E1E9598A5000B0FF8 /* Main.storyboard in Resources */,

@@ -22,13 +22,25 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        updateSettingsValues()
         loadStates()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        updateSettingsValues()
         loadStates()
+    }
+    
+    func updateSettingsValues() {
+        if let dolarPrice = UserDefaults.standard.string(forKey: "dolar_preference") {
+            tfDolarPrice.text = dolarPrice
+        }
+        
+        if let iofPrice = UserDefaults.standard.string(forKey: "iof_preference") {
+            tfIOF.text = iofPrice
+        }
     }
     
     func loadStates() {
@@ -139,3 +151,12 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
 }
+
+extension SettingsViewController: UITextFieldDelegate {
+    // When finishes edition typing
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print("End editing tinput")
+        UserDefaults.standard.set(tfDolarPrice.text, forKey: "dolar_preference")
+    }
+}
+
