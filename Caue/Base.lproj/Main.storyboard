@@ -100,6 +100,10 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CqB-Yk-B4N">
                                 <rect key="frame" x="0.0" y="207" width="320" height="246"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="kqf-t0-dum" id="dIQ-SX-3pO"/>
+                                    <outlet property="delegate" destination="kqf-t0-dum" id="B82-SU-m6B"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V2s-Ja-ut0">
                                 <rect key="frame" x="189" y="481" width="115" height="30"/>

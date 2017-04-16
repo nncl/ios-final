@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - IBOutlets
     var dataSource: [State] = []
@@ -21,6 +21,30 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadStates()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        loadStates()
+    }
+    
+    func loadStates() {
+        let fetchRequest: NSFetchRequest<State> = State.fetchRequest()
+        
+        // Ordenação por nome
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        do {
+            dataSource = try context.fetch(fetchRequest)
+            tableView.reloadData()
+            
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
     override var canBecomeFirstResponder: Bool {
@@ -60,7 +84,7 @@ class SettingsViewController: UIViewController {
             
             do {
                 try self.context.save()
-                // self.loadStates()
+                self.loadStates()
             } catch {
                 print(error.localizedDescription)
             }
@@ -74,5 +98,17 @@ class SettingsViewController: UIViewController {
     
     @IBAction func add(_ sender: Any) {
         showAlert(type: .add, state: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataSource.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        let state = dataSource[indexPath.row]
+        cell.textLabel?.text = state.name
+        
+        return cell
     }
 }
