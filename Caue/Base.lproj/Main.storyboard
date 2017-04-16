@@ -191,10 +191,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btAddUpdate" destination="71b-ZP-8QM" id="cjq-2G-xOo"/>
                         <outlet property="ivImage" destination="Bal-LS-M0J" id="7Fn-hq-AxE"/>
                         <outlet property="swCard" destination="gCf-SJ-mvz" id="yaJ-v4-YcL"/>
                         <outlet property="tfName" destination="SPm-Tb-yPr" id="4MF-1c-izj"/>
                         <outlet property="tfPrice" destination="5fo-Ms-y5A" id="SFw-iJ-HWN"/>
+                        <outlet property="tfState" destination="vMM-37-y9G" id="Y9B-r8-bqn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oFL-5h-ddv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -311,7 +313,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Buh-ml-uYv">
                                             <connections>
-                                                <action selector="add:" destination="xbQ-7r-Ekb" id="aNt-KN-fB0"/>
+                                                <action selector="add:" destination="xbQ-7r-Ekb" id="gfq-om-e2l"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>

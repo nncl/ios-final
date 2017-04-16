@@ -11,15 +11,37 @@ import UIKit
 class ProductViewController: UIViewController {
     
     // MARK: - Variables
+    var product: Product!
     
     @IBOutlet weak var tfName: UITextField!
     @IBOutlet weak var ivImage: UIImageView!
     @IBOutlet weak var tfPrice: UITextField!
     @IBOutlet weak var swCard: UISwitch!
-
+    @IBOutlet weak var btAddUpdate: UIButton!
+    @IBOutlet weak var tfState: UITextField!
+    
     // MARK: - Functions/Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if product != nil {
+            product.name = tfName.text
+            product.card = swCard.isOn
+            product.price = Float(tfPrice.text!)!
+            
+            btAddUpdate.setTitle("Atualizar", for: .normal)
+            
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if product != nil {
+            if let states = product.states {
+                // tfState.text = "\(states.map({($0 as! State)}))"
+            }
+        }
     }
     
     override var canBecomeFirstResponder: Bool {
@@ -31,9 +53,12 @@ class ProductViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? StatesViewController {
-            // TODO
+        let vc = segue.destination as! StatesViewController
+        if product == nil {
+            product = Product(context: context)
         }
+        vc.product = product
+        
     }
     
     // TODO Finish save
@@ -43,7 +68,17 @@ class ProductViewController: UIViewController {
         if (tfName.text?.isEmpty ?? true || tfPrice.text?.isEmpty ?? true) {
             doShowError(title: "Erro", message: "Todos os campos são obrigatórios")
         } else {
-            // TODO Save product
+            
+            if product == nil {product = Product(context: context)}
+            product.name = tfName.text
+            product.card = swCard.isOn
+            product.price = Float(tfPrice.text!)!
+            
+            do {
+                try context.save()
+            } catch {
+                print(error.localizedDescription)
+            }
         }
     }
     
