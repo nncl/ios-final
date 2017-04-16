@@ -105,9 +105,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
         let state = dataSource[indexPath.row]
         cell.textLabel?.text = state.name
+        cell.detailTextLabel?.text = "\(state.tax)"
+        cell.detailTextLabel?.textColor = .red
         
         return cell
     }
