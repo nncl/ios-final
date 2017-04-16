@@ -47,10 +47,10 @@
             </objects>
             <point key="canvasLocation" x="1376.25" y="241.90140845070422"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="Yp9-QT-ETj">
             <objects>
-                <viewController id="kqf-t0-dum" sceneMemberID="viewController">
+                <viewController id="kqf-t0-dum" customClass="SettingsViewController" customModule="Caue" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="P2B-gV-AYU"/>
                         <viewControllerLayoutGuide type="bottom" id="SSy-L5-Eza"/>
@@ -108,6 +108,9 @@
                                     <constraint firstAttribute="width" constant="115" id="zYg-rz-pWx"/>
                                 </constraints>
                                 <state key="normal" title="Adicionar estado"/>
+                                <connections>
+                                    <action selector="add:" destination="kqf-t0-dum" eventType="touchUpInside" id="r15-st-L8g"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -136,6 +139,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="In1-1R-BxQ"/>
+                    <connections>
+                        <outlet property="tableView" destination="CqB-Yk-B4N" id="IXL-Ao-lvw"/>
+                        <outlet property="tfDolarPrice" destination="ea4-pK-6R2" id="bi1-77-VkQ"/>
+                        <outlet property="tfIOF" destination="BfP-IM-y8h" id="Wm7-vt-0WF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6L6-Tr-XMS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
