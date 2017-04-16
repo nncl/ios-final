@@ -50,10 +50,19 @@ class StatesViewController: UIViewController {
             }
         }
         
+        alert.addTextField { (textField: UITextField) in
+            textField.placeholder = "Imposto"
+            
+            if let tax = state?.tax {
+                textField.text = "\(tax)"
+            }
+        }
+        
         alert.addAction(UIAlertAction(title: title, style: .default, handler: { (action: UIAlertAction) in
             // Cria um estado se não for nulo
             let state = state ?? State(context: self.context)
             state.name = alert.textFields?.first?.text
+            state.tax = Double((alert.textFields?[1].text)!)!
             
             do {
                 try self.context.save()
@@ -135,6 +144,8 @@ extension StatesViewController: UITableViewDataSource {
         
         let state = dataSource[indexPath.row]
         cell.textLabel?.text = state.name
+        cell.detailTextLabel?.text = "\(state.tax)"
+        cell.detailTextLabel?.textColor = .red
         cell.accessoryType = .none
         
         if let states = product.states {
