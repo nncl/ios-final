@@ -36,6 +36,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     func updateSettingsValues() {
         if let dolarPrice = UserDefaults.standard.string(forKey: "dolar_preference") {
             tfDolarPrice.text = dolarPrice
+            print("tem dolar_preference")
         } else {
             // BUG iOS XCode
             // Setamos o valor aqui e o recuperamos pois parece que o XCode está com bug no simulador
@@ -45,6 +46,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
         if let iofPrice = UserDefaults.standard.string(forKey: "iof_preference") {
+            print("tem iof_preference")
             tfIOF.text = iofPrice
         } else {
             // BUG iOS XCode
@@ -163,7 +165,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 }
 
 extension SettingsViewController: UITextFieldDelegate {
-    // TODO Not firing it
     func textFieldDidEndEditing(_ textField: UITextField) {
         print("End editing tinput")
         UserDefaults.standard.set(tfDolarPrice.text, forKey: "dolar_preference")
