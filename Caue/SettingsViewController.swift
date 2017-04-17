@@ -39,6 +39,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         } else {
             // BUG iOS XCode
             // Setamos o valor aqui e o recuperamos pois parece que o XCode está com bug no simulador
+            // Então se houver e conseguir no settings bundle pega de lá, do contrário define e seta
             UserDefaults.standard.set(3.14, forKey: "dolar_preference")
             tfDolarPrice.text = UserDefaults.standard.string(forKey: "dolar_preference")
         }
