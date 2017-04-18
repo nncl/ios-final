@@ -166,7 +166,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 
 extension SettingsViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print("End editing tinput")
         UserDefaults.standard.set(tfDolarPrice.text, forKey: "dolar_preference")
         UserDefaults.standard.set(tfIOF.text, forKey: "iof_preference")
     }
