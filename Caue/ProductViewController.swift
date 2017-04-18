@@ -145,7 +145,6 @@ extension ProductViewController: UIPickerViewDelegate {
     
     //
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print("Cumero \(dataSource[row].name) com tax de \(dataSource[row].tax)")
         tfState.text = dataSource[row].name
     }
     
