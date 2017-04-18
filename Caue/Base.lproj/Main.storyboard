@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KoL-Ym-1u8" id="Iqw-2X-jDF">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -279,7 +279,7 @@
                         <outlet property="swCard" destination="gCf-SJ-mvz" id="yaJ-v4-YcL"/>
                         <outlet property="tfName" destination="SPm-Tb-yPr" id="4MF-1c-izj"/>
                         <outlet property="tfPrice" destination="5fo-Ms-y5A" id="SFw-iJ-HWN"/>
-                        <outlet property="tfState" destination="vMM-37-y9G" id="Y9B-r8-bqn"/>
+                        <outlet property="tfState" destination="vMM-37-y9G" id="L0i-Pp-ZgC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oFL-5h-ddv" userLabel="First Responder" sceneMemberID="firstResponder"/>

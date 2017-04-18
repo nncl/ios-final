@@ -11,8 +11,15 @@ import UIKit
 class ProductViewController: UIViewController {
     
     // MARK: - Variables
+    var dataSource = [
+        "Arroz",
+        "Feijão",
+        "Batata",
+        "Macarrão",
+        "Ovo"
+    ]
     var product: Product!
-    
+    var pickerView: UIPickerView!
     @IBOutlet weak var tfName: UITextField!
     @IBOutlet weak var ivImage: UIImageView!
     @IBOutlet weak var tfPrice: UITextField!
@@ -21,6 +28,16 @@ class ProductViewController: UIViewController {
     @IBOutlet weak var tfState: UITextField!
     
     // MARK: - Functions/Methods
+    func cancel() {
+        tfState.resignFirstResponder() // Some com o foco do tfield, fazendo o teclado sumir
+    }
+    
+    // Clica no outro botão do toolbar
+    func done() {
+        tfState.text = dataSource[pickerView.selectedRow(inComponent: 0)]
+        cancel()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,6 +49,21 @@ class ProductViewController: UIViewController {
             btAddUpdate.setTitle("Atualizar", for: .normal)
             
         }
+        
+        pickerView = UIPickerView()
+        pickerView.backgroundColor = .white
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        
+        // Build do select dos estados
+        let toolBar = UIToolbar(frame: CGRect(x:0,y:0,width:self.view.frame.size.width, height: 44))
+        let btCancel = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
+        let btSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let btDone = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+        toolBar.items = [btCancel, btSpace, btDone] // Adicionando na toolbar
+        
+        tfState.inputView = pickerView
+        tfState.inputAccessoryView = toolBar
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -103,6 +135,31 @@ class ProductViewController: UIViewController {
      self.present(alert, animated: true)
 
      */
-    
-
 }
+
+extension ProductViewController: UIPickerViewDelegate {
+    
+    // Populamos os valores que aparecerão no PickerView
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return dataSource[row]
+    }
+    
+    //
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print("Cumero " + dataSource[row])
+        tfState.text = dataSource[row]
+    }
+    
+}
+
+extension ProductViewController: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        // Quantos componentes existem no pickerview = colunas; like date
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return dataSource.count
+    }
+}
+
