@@ -7,17 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
 class ProductViewController: UIViewController {
     
     // MARK: - Variables
-    var dataSource = [
-        "Arroz",
-        "Feijão",
-        "Batata",
-        "Macarrão",
-        "Ovo"
-    ]
+    var dataSource: [State] = []
     var product: Product!
     var pickerView: UIPickerView!
     @IBOutlet weak var tfName: UITextField!
@@ -34,12 +29,28 @@ class ProductViewController: UIViewController {
     
     // Clica no outro botão do toolbar
     func done() {
-        tfState.text = dataSource[pickerView.selectedRow(inComponent: 0)]
+        tfState.text = dataSource[pickerView.selectedRow(inComponent: 0)].name
         cancel()
+    }
+    
+    func loadStates() {
+        let fetchRequest: NSFetchRequest<State> = State.fetchRequest()
+        
+        // Ordenação por nome
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        do {
+            dataSource = try context.fetch(fetchRequest)
+            
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadStates()
         
         if product != nil {
             product.name = tfName.text
@@ -96,7 +107,7 @@ class ProductViewController: UIViewController {
     // TODO Finish save
     @IBAction func doSaveProduct(_ sender: UIButton) {
         
-        // Validate fields
+        // Validação de campos
         if (tfName.text?.isEmpty ?? true || tfPrice.text?.isEmpty ?? true) {
             doShowError(title: "Erro", message: "Todos os campos são obrigatórios")
         } else {
@@ -123,31 +134,19 @@ class ProductViewController: UIViewController {
         
         self.present(alert, animated: true)
     }
-    
-    /*
-     * Action sheet
-     
-     let alert = UIAlertController(title: "Do something", message: "With this", preferredStyle: .actionSheet)
-     alert.addAction(UIAlertAction(title: "A thing", style: .default) { action in
-     // perhaps use action.title here
-     })
-     
-     self.present(alert, animated: true)
-
-     */
 }
 
 extension ProductViewController: UIPickerViewDelegate {
     
     // Populamos os valores que aparecerão no PickerView
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return dataSource[row]
+        return dataSource[row].name
     }
     
     //
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print("Cumero " + dataSource[row])
-        tfState.text = dataSource[row]
+        print("Cumero \(dataSource[row].name) com tax de \(dataSource[row].tax)")
+        tfState.text = dataSource[row].name
     }
     
 }
