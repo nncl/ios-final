@@ -50,7 +50,6 @@ class ProductViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadStates()
         
         if product != nil {
             product.name = tfName.text
@@ -79,6 +78,8 @@ class ProductViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        loadStates()
         
         if product != nil {
             if let states = product.states {
