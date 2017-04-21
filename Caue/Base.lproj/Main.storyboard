@@ -244,6 +244,27 @@
                                     <action selector="doSaveProduct:" destination="ohV-cV-tbM" eventType="touchUpInside" id="PY1-Hj-UGH"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SKU-Wu-Zoj">
+                                <rect key="frame" x="16" y="110" width="288" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="1AO-qp-76d"/>
+                                    <constraint firstAttribute="height" constant="50" id="N7i-6S-yNO"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="N7i-6S-yNO"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="1AO-qp-76d"/>
+                                        <include reference="N7i-6S-yNO"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="addPoster:" destination="ohV-cV-tbM" eventType="touchUpInside" id="xPI-nk-lpK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -256,12 +277,15 @@
                             <constraint firstItem="58k-Cu-wIC" firstAttribute="top" secondItem="Bal-LS-M0J" secondAttribute="bottom" constant="12" id="C8B-zb-puT"/>
                             <constraint firstItem="5fo-Ms-y5A" firstAttribute="leading" secondItem="3ZP-uV-zJC" secondAttribute="leadingMargin" id="Cft-QT-dhZ"/>
                             <constraint firstItem="9Oe-Pi-ZIV" firstAttribute="leading" secondItem="5fo-Ms-y5A" secondAttribute="trailing" constant="25" id="Ion-kZ-Ptq"/>
+                            <constraint firstItem="SKU-Wu-Zoj" firstAttribute="leading" secondItem="3ZP-uV-zJC" secondAttribute="leadingMargin" id="IwC-PF-jjG"/>
                             <constraint firstItem="gCf-SJ-mvz" firstAttribute="top" secondItem="vMM-37-y9G" secondAttribute="bottom" constant="7" id="OhT-IU-TDm"/>
                             <constraint firstItem="58k-Cu-wIC" firstAttribute="trailing" secondItem="3ZP-uV-zJC" secondAttribute="trailingMargin" id="PGl-gp-MCj"/>
                             <constraint firstItem="71b-ZP-8QM" firstAttribute="top" secondItem="gCf-SJ-mvz" secondAttribute="bottom" constant="8" id="PNy-u3-tIn"/>
                             <constraint firstAttribute="trailing" secondItem="71b-ZP-8QM" secondAttribute="trailing" constant="16" id="Pnd-jB-o9s"/>
                             <constraint firstItem="vMM-37-y9G" firstAttribute="leading" secondItem="3ZP-uV-zJC" secondAttribute="leadingMargin" id="QWX-sk-JLD"/>
+                            <constraint firstItem="SKU-Wu-Zoj" firstAttribute="trailing" secondItem="3ZP-uV-zJC" secondAttribute="trailingMargin" id="RPJ-cC-IKH"/>
                             <constraint firstItem="gCf-SJ-mvz" firstAttribute="leading" secondItem="9Oe-Pi-ZIV" secondAttribute="trailing" constant="8" id="T2R-Ed-1zy"/>
+                            <constraint firstItem="SKU-Wu-Zoj" firstAttribute="top" secondItem="SPm-Tb-yPr" secondAttribute="bottom" constant="8" id="TLW-xJ-4fn"/>
                             <constraint firstItem="9Oe-Pi-ZIV" firstAttribute="top" secondItem="vMM-37-y9G" secondAttribute="bottom" constant="13" id="ZA5-X5-964"/>
                             <constraint firstItem="5fo-Ms-y5A" firstAttribute="top" secondItem="vMM-37-y9G" secondAttribute="bottom" constant="8" id="Zkb-JP-hhR"/>
                             <constraint firstItem="Bal-LS-M0J" firstAttribute="top" secondItem="SPm-Tb-yPr" secondAttribute="bottom" constant="8" id="b7j-xz-Uyl"/>
@@ -275,7 +299,7 @@
                     </view>
                     <connections>
                         <outlet property="btAddUpdate" destination="71b-ZP-8QM" id="cjq-2G-xOo"/>
-                        <outlet property="ivImage" destination="Bal-LS-M0J" id="7Fn-hq-AxE"/>
+                        <outlet property="ivPoster" destination="Bal-LS-M0J" id="o1c-YR-dJl"/>
                         <outlet property="swCard" destination="gCf-SJ-mvz" id="yaJ-v4-YcL"/>
                         <outlet property="tfName" destination="SPm-Tb-yPr" id="4MF-1c-izj"/>
                         <outlet property="tfPrice" destination="5fo-Ms-y5A" id="SFw-iJ-HWN"/>
