@@ -85,7 +85,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         // Add campos no alert
         alert.addTextField { (textField: UITextField) in
-            textField.placeholder = "Nome do Estado US"
+            textField.placeholder = "Nome do Estado"
             
             if let name = state?.name {
                 textField.text = name

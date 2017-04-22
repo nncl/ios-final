@@ -174,8 +174,6 @@ class ProductViewController: UIViewController {
             product.total = product.total + product.price
             
             if swCard.isOn {
-                print("Pagou com cartão")
-                
                 if let dolarPrice = UserDefaults.standard.string(forKey: "iof_preference") {
                     
                     // Pegar IOF% do produto e somar no total
@@ -187,8 +185,6 @@ class ProductViewController: UIViewController {
                     doShowMessage(title: "Erro", message: "Erro ao calcular IOF. Tente novamente", back: nil)
                 }
             }
-            
-            print("Valor total do produto: \(product.total)")
             
             do {
                 try context.save()
@@ -206,6 +202,7 @@ class ProductViewController: UIViewController {
         let action = UIAlertAction(title: "OK", style: .cancel) { (UIAlertAction) in
             if let getBack = back {
                 if getBack == true {
+                    
                     self.navigationController?.popToRootViewController(animated: true)
                 }
             }
