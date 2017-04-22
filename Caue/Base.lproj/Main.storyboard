@@ -83,6 +83,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="ohV-cV-tbM" kind="show" identifier="editSegue" id="mcG-hu-hLB"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OpB-U5-iVO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -490,4 +493,7 @@
         <image name="gift" width="200" height="200"/>
         <image name="settings" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="mcG-hu-hLB"/>
+    </inferredMetricsTieBreakers>
 </document>

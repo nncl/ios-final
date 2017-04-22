@@ -14,6 +14,7 @@ class ProductViewController: UIViewController {
     // MARK: - Variables
     var smallImage: UIImage!
     var stateTax: Double = 0
+    var currentState: State!
     var dataSource: [State] = []
     var product: Product!
     var pickerView: UIPickerView!
@@ -63,6 +64,7 @@ class ProductViewController: UIViewController {
     func done() {
         tfState.text = dataSource[pickerView.selectedRow(inComponent: 0)].name
         stateTax = dataSource[pickerView.selectedRow(inComponent: 0)].tax
+        currentState = dataSource[pickerView.selectedRow(inComponent: 0)]
         cancel()
     }
     
@@ -85,15 +87,23 @@ class ProductViewController: UIViewController {
         super.viewDidLoad()
         
         if product != nil {
-            product.name = tfName.text
-            product.card = swCard.isOn
-            product.price = Float(tfPrice.text!)!
+            tfName.text = product.name
+            swCard.isOn = product.card
+            tfPrice.text = "\(product.price)"
+            
+            if let states = product.states {
+                let arr = states.allObjects
+                print("Quantidade de estados: \(arr.count)")
+                tfState.text = arr.map({($0 as! State).name!}).joined(separator: " | ")
+            }
             
             if let image = product.poster as? UIImage {
                 ivPoster.image = image
             }
             
             btAddUpdate.setTitle("Atualizar", for: .normal)
+        } else {
+            print("Novo produto")
         }
         
         pickerView = UIPickerView()
@@ -164,6 +174,7 @@ class ProductViewController: UIViewController {
             product.name = tfName.text
             product.card = swCard.isOn
             product.price = Float(tfPrice.text!)!
+            product.states = [currentState]
             
             if smallImage != nil {
                 product.poster = smallImage
@@ -225,6 +236,7 @@ extension ProductViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         tfState.text = dataSource[row].name
         stateTax = dataSource[row].tax
+        currentState = dataSource[row]
     }
     
 }
