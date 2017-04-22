@@ -121,7 +121,10 @@ class ProductViewController: UIViewController {
             if let states = product.states {
                 let arr = states.allObjects
                 tfState.text = arr.map({($0 as! State).name!}).joined(separator: " | ")
-                stateTax = (arr[0] as! State).tax
+                
+                if (arr.count > 0) {
+                    stateTax = (arr[0] as! State).tax
+                }
             }
         }
     }
@@ -148,12 +151,13 @@ class ProductViewController: UIViewController {
         return total
     }
     
-    // TODO Finish save
     @IBAction func doSaveProduct(_ sender: UIButton) {
         
         // Validação de campos
         if (tfName.text?.isEmpty ?? true || tfPrice.text?.isEmpty ?? true) {
-            doShowMessage(title: "Erro", message: "Todos os campos são obrigatórios")
+            
+            doShowMessage(title: "Erro", message: "Todos os campos são obrigatórios", back: nil)
+            
         } else {
             
             if product == nil {product = Product(context: context)}
@@ -164,37 +168,31 @@ class ProductViewController: UIViewController {
             if smallImage != nil {
                 product.poster = smallImage
             }
-            
-            // TODO Aplicar imposto do estado
-            // Do preço do produto, adicionar ele + x% dele mesmo no total
 
             product.total = Float(calculatePercentageValue(value: Double(product.price), percentage: Double(stateTax)))
             
-            print("Tax value \(product.total)")
             product.total = product.total + product.price
             
-            print("Total here \(product.total)")
-            
-            return
-            
             if swCard.isOn {
-                // Pagou com cartão
+                print("Pagou com cartão")
                 
                 if let dolarPrice = UserDefaults.standard.string(forKey: "iof_preference") {
                     
+                    // Pegar IOF% do produto e somar no total
+                    let totalWithIOF = Float(calculatePercentageValue(value: Double(product.price), percentage: Double(dolarPrice)!))
+                    
+                    product.total = product.total + totalWithIOF
+                    
                 } else {
-                    doShowMessage(title: "Erro", message: "Erro ao calcular IOF. Tente novamente")
+                    doShowMessage(title: "Erro", message: "Erro ao calcular IOF. Tente novamente", back: nil)
                 }
-                
-                // TODO Aplicar IOF no total
-                // Do preço do produto, pegar x% dele do IOF e somar no total
             }
+            
+            print("Valor total do produto: \(product.total)")
             
             do {
                 try context.save()
-                doShowMessage(title: "Sucesso", message: "Produto cadastrado com sucesso")
-                
-                // TODO Voltar pra lista de produtos
+                doShowMessage(title: "Sucesso", message: "Produto cadastrado com sucesso", back: true)
                 
             } catch {
                 print(error.localizedDescription)
@@ -202,10 +200,16 @@ class ProductViewController: UIViewController {
         }
     }
     
-    func doShowMessage(title: String, message: String) {
+    func doShowMessage(title: String, message: String, back: Bool?) {
         let alert = UIAlertController(title: title, message: "\(message)", preferredStyle: UIAlertControllerStyle.alert)
         
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        let action = UIAlertAction(title: "OK", style: .cancel) { (UIAlertAction) in
+            if let getBack = back {
+                if getBack == true {
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
+            }
+        }
         
         alert.addAction(action)
         
