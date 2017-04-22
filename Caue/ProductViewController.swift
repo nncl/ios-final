@@ -13,6 +13,7 @@ class ProductViewController: UIViewController {
     
     // MARK: - Variables
     var smallImage: UIImage!
+    var stateTax: Double = 0
     var dataSource: [State] = []
     var product: Product!
     var pickerView: UIPickerView!
@@ -61,6 +62,7 @@ class ProductViewController: UIViewController {
     // Clica no outro botão do toolbar
     func done() {
         tfState.text = dataSource[pickerView.selectedRow(inComponent: 0)].name
+        stateTax = dataSource[pickerView.selectedRow(inComponent: 0)].tax
         cancel()
     }
     
@@ -87,8 +89,11 @@ class ProductViewController: UIViewController {
             product.card = swCard.isOn
             product.price = Float(tfPrice.text!)!
             
-            btAddUpdate.setTitle("Atualizar", for: .normal)
+            if let image = product.poster as? UIImage {
+                ivPoster.image = image
+            }
             
+            btAddUpdate.setTitle("Atualizar", for: .normal)
         }
         
         pickerView = UIPickerView()
@@ -116,6 +121,7 @@ class ProductViewController: UIViewController {
             if let states = product.states {
                 let arr = states.allObjects
                 tfState.text = arr.map({($0 as! State).name!}).joined(separator: " | ")
+                stateTax = (arr[0] as! State).tax
             }
         }
     }
@@ -136,12 +142,18 @@ class ProductViewController: UIViewController {
         vc.product = product
     }
     
+    func calculatePercentageValue(value: Double, percentage: Double) -> Double {
+        var total: Double = (percentage / 100)
+        total = total * value
+        return total
+    }
+    
     // TODO Finish save
     @IBAction func doSaveProduct(_ sender: UIButton) {
         
         // Validação de campos
         if (tfName.text?.isEmpty ?? true || tfPrice.text?.isEmpty ?? true) {
-            doShowError(title: "Erro", message: "Todos os campos são obrigatórios")
+            doShowMessage(title: "Erro", message: "Todos os campos são obrigatórios")
         } else {
             
             if product == nil {product = Product(context: context)}
@@ -149,15 +161,48 @@ class ProductViewController: UIViewController {
             product.card = swCard.isOn
             product.price = Float(tfPrice.text!)!
             
+            if smallImage != nil {
+                product.poster = smallImage
+            }
+            
+            // TODO Aplicar imposto do estado
+            // Do preço do produto, adicionar ele + x% dele mesmo no total
+
+            product.total = Float(calculatePercentageValue(value: Double(product.price), percentage: Double(stateTax)))
+            
+            print("Tax value \(product.total)")
+            product.total = product.total + product.price
+            
+            print("Total here \(product.total)")
+            
+            return
+            
+            if swCard.isOn {
+                // Pagou com cartão
+                
+                if let dolarPrice = UserDefaults.standard.string(forKey: "iof_preference") {
+                    
+                } else {
+                    doShowMessage(title: "Erro", message: "Erro ao calcular IOF. Tente novamente")
+                }
+                
+                // TODO Aplicar IOF no total
+                // Do preço do produto, pegar x% dele do IOF e somar no total
+            }
+            
             do {
                 try context.save()
+                doShowMessage(title: "Sucesso", message: "Produto cadastrado com sucesso")
+                
+                // TODO Voltar pra lista de produtos
+                
             } catch {
                 print(error.localizedDescription)
             }
         }
     }
     
-    func doShowError(title: String, message: String) {
+    func doShowMessage(title: String, message: String) {
         let alert = UIAlertController(title: title, message: "\(message)", preferredStyle: UIAlertControllerStyle.alert)
         
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -178,6 +223,7 @@ extension ProductViewController: UIPickerViewDelegate {
     //
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         tfState.text = dataSource[row].name
+        stateTax = dataSource[row].tax
     }
     
 }
