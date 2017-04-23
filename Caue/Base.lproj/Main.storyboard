@@ -203,6 +203,86 @@
             </objects>
             <point key="canvasLocation" x="1374.375" y="1030.9859154929577"/>
         </scene>
+        <!--Total-->
+        <scene sceneID="RwV-kA-mXa">
+            <objects>
+                <viewController id="SK9-Xs-YSN" customClass="TotalViewController" customModule="Caue" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1xN-de-Q6H"/>
+                        <viewControllerLayoutGuide type="bottom" id="HzC-Xm-t2A"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Qqa-HZ-aYo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total em U$:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Agr-4g-KaF">
+                                <rect key="frame" x="16" y="72" width="288" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="3Ke-lF-LmA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JxE-fA-ucy">
+                                <rect key="frame" x="16" y="101" width="288" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="RCv-Aq-hfH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="42"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.02053295671066202" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total em R$:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jct-2W-rmJ">
+                                <rect key="frame" x="16" y="209" width="288" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="hXo-yY-0TD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJS-tg-fp8">
+                                <rect key="frame" x="16" y="238" width="288" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="cKL-qQ-Ujo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="42"/>
+                                <color key="textColor" red="0.0" green="0.72506953534031415" blue="0.20224249249811785" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Agr-4g-KaF" firstAttribute="leading" secondItem="Qqa-HZ-aYo" secondAttribute="leadingMargin" id="31I-XW-u0o"/>
+                            <constraint firstItem="JxE-fA-ucy" firstAttribute="leading" secondItem="Qqa-HZ-aYo" secondAttribute="leadingMargin" id="6oU-2V-Tob"/>
+                            <constraint firstItem="JxE-fA-ucy" firstAttribute="trailing" secondItem="Qqa-HZ-aYo" secondAttribute="trailingMargin" id="Lyd-JF-f8t"/>
+                            <constraint firstItem="hJS-tg-fp8" firstAttribute="trailing" secondItem="Qqa-HZ-aYo" secondAttribute="trailingMargin" id="Q2o-Nr-hU4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Jct-2W-rmJ" secondAttribute="trailing" id="RHm-jF-QkL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Agr-4g-KaF" secondAttribute="trailing" id="WIo-Xr-vLY"/>
+                            <constraint firstItem="Jct-2W-rmJ" firstAttribute="top" secondItem="JxE-fA-ucy" secondAttribute="bottom" constant="43" id="ehH-I1-YqR"/>
+                            <constraint firstItem="hJS-tg-fp8" firstAttribute="leading" secondItem="Qqa-HZ-aYo" secondAttribute="leadingMargin" id="gcL-AI-6nh"/>
+                            <constraint firstItem="Jct-2W-rmJ" firstAttribute="leading" secondItem="Qqa-HZ-aYo" secondAttribute="leadingMargin" id="gsT-ho-tFf"/>
+                            <constraint firstItem="JxE-fA-ucy" firstAttribute="top" secondItem="Agr-4g-KaF" secondAttribute="bottom" constant="8" id="j44-r9-TUE"/>
+                            <constraint firstItem="hJS-tg-fp8" firstAttribute="top" secondItem="Jct-2W-rmJ" secondAttribute="bottom" constant="8" id="jXL-15-Mas"/>
+                            <constraint firstItem="Agr-4g-KaF" firstAttribute="top" secondItem="1xN-de-Q6H" secondAttribute="bottom" constant="8" id="lwF-FL-u1g"/>
+                        </constraints>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <include reference="ehH-I1-YqR"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Total" id="SH0-zW-OfQ"/>
+                    <connections>
+                        <outlet property="tfTotalDolar" destination="JxE-fA-ucy" id="TgM-qg-acU"/>
+                        <outlet property="tfTotalReal" destination="hJS-tg-fp8" id="PFg-ZZ-92D"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="imL-BE-Bla" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1372.5" y="1720.7746478873239"/>
+        </scene>
         <!--Cadastrar Produto-->
         <scene sceneID="XbG-17-zMV">
             <objects>
@@ -367,6 +447,7 @@
                     <connections>
                         <segue destination="t9g-vy-b9D" kind="relationship" relationship="viewControllers" id="9jI-TT-Vrs"/>
                         <segue destination="kg3-XV-4yF" kind="relationship" relationship="viewControllers" id="ce7-UT-G3c"/>
+                        <segue destination="xRc-MO-NVx" kind="relationship" relationship="viewControllers" id="zTM-xZ-BVs"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hJw-M6-9fE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -486,6 +567,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fMR-H8-zP9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="379" y="1031"/>
+        </scene>
+        <!--Total-->
+        <scene sceneID="VuB-7B-jNz">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xRc-MO-NVx" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Total" image="cart" id="r9X-6U-DoB"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TCI-QD-u2Z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="SK9-Xs-YSN" kind="relationship" relationship="rootViewController" id="et9-6z-YoF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vnx-qQ-JNn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="379" y="1721"/>
         </scene>
     </scenes>
     <resources>

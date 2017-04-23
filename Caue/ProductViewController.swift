@@ -93,7 +93,6 @@ class ProductViewController: UIViewController {
             
             if let states = product.states {
                 let arr = states.allObjects
-                print("Quantidade de estados: \(arr.count)")
                 tfState.text = arr.map({($0 as! State).name!}).joined(separator: " | ")
             }
             
@@ -134,6 +133,7 @@ class ProductViewController: UIViewController {
                 
                 if (arr.count > 0) {
                     stateTax = (arr[0] as! State).tax
+                    currentState = (arr[0] as! State)
                 }
             }
         }
@@ -170,39 +170,49 @@ class ProductViewController: UIViewController {
             
         } else {
             
-            if product == nil {product = Product(context: context)}
-            product.name = tfName.text
-            product.card = swCard.isOn
-            product.price = Float(tfPrice.text!)!
-            product.states = [currentState]
-            
-            if smallImage != nil {
-                product.poster = smallImage
-            }
-
-            product.total = Float(calculatePercentageValue(value: Double(product.price), percentage: Double(stateTax)))
-            
-            product.total = product.total + product.price
-            
-            if swCard.isOn {
-                if let dolarPrice = UserDefaults.standard.string(forKey: "iof_preference") {
-                    
-                    // Pegar IOF% do produto e somar no total
-                    let totalWithIOF = Float(calculatePercentageValue(value: Double(product.price), percentage: Double(dolarPrice)!))
-                    
-                    product.total = product.total + totalWithIOF
-                    
-                } else {
-                    doShowMessage(title: "Erro", message: "Erro ao calcular IOF. Tente novamente", back: nil)
-                }
-            }
-            
-            do {
-                try context.save()
-                doShowMessage(title: "Sucesso", message: "Produto cadastrado com sucesso", back: true)
+            if let dolarPrice = UserDefaults.standard.string(forKey: "dolar_preference") {
                 
-            } catch {
-                print(error.localizedDescription)
+                if product == nil {product = Product(context: context)}
+                product.name = tfName.text
+                product.card = swCard.isOn
+                product.price = Float(tfPrice.text!)!
+                product.states = [currentState]
+                
+                if smallImage != nil {
+                    product.poster = smallImage
+                }
+                
+                // Imposto do Estado
+                let productPercentage = Float(calculatePercentageValue(value: Double(product.price), percentage: Double(stateTax)))
+                
+                product.totalDolar = product.price + productPercentage
+                product.totalReal = product.totalDolar * Float(dolarPrice)!
+                
+                // Caso o pagamento do produto foi via cartão, aplicamos o imposto IOF
+                // no total R$
+                if swCard.isOn {
+                    if let iofPrice = UserDefaults.standard.string(forKey: "iof_preference") {
+                        
+                        // O valor do IOF é sob o valor do produto já convertido pra real :(
+                        
+                        let productCardPrice = product.totalReal * Float(iofPrice)!
+                        product.totalReal = product.totalReal + productCardPrice
+                        
+                    } else {
+                        doShowMessage(title: "Erro", message: "Erro ao calcular IOF. Tente novamente", back: nil)
+                    }
+                }
+                
+                do {
+                    try context.save()
+                    doShowMessage(title: "Sucesso", message: "Produto salvo com sucesso", back: true)
+                    
+                } catch {
+                    print(error.localizedDescription)
+                }
+                
+            } else {
+                doShowMessage(title: "Erro", message: "Erro ao calcular cotação do dólar. Tente novamente", back: nil)
             }
         }
     }
@@ -213,7 +223,6 @@ class ProductViewController: UIViewController {
         let action = UIAlertAction(title: "OK", style: .cancel) { (UIAlertAction) in
             if let getBack = back {
                 if getBack == true {
-                    
                     self.navigationController?.popToRootViewController(animated: true)
                 }
             }

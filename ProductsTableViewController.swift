@@ -88,10 +88,8 @@ class ProductsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let product = fetchedResultController.object(at: indexPath)
-        print("\(product.name) and \(product.price)")
         
         performSegue(withIdentifier: "editSegue", sender: nil)
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
