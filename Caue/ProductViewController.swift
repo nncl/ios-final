@@ -33,8 +33,7 @@ class ProductViewController: UIViewController {
     }
     
     @IBAction func addPoster(_ sender: UIButton) {
-        print("Add poster")
-        let alert = UIAlertController(title: "Selecionar poster", message: "De onde você quer escolher o poster", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Selecionar poster", message: "Escolha uma foto ou tire uma nova agora mesmo :)", preferredStyle: .actionSheet)
         
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let cameraAction = UIAlertAction(title: "Câmera", style: .default) { (action: UIAlertAction) in
@@ -195,8 +194,8 @@ class ProductViewController: UIViewController {
                         
                         // O valor do IOF é sob o valor do produto já convertido pra real :(
                         
-                        let productCardPrice = product.totalReal * Float(iofPrice)!
-                        product.totalReal = product.totalReal + productCardPrice
+                        let productPercentage = calculatePercentageValue(value: Double(product.totalReal), percentage: Double(iofPrice)!)
+                        product.totalReal = product.totalReal + Float(productPercentage)
                         
                     } else {
                         doShowMessage(title: "Erro", message: "Erro ao calcular IOF. Tente novamente", back: nil)

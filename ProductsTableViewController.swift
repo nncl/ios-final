@@ -75,14 +75,30 @@ class ProductsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let product = fetchedResultController.object(at: indexPath)
-            context.delete(product)
             
-            do {
-                try context.save()
-            } catch {
-                print(error.localizedDescription)
-            }
+            // Confirmação
+            
+            let alert = UIAlertController(title: "Você tem certeza?", message: "Você quer mesmo remover esse produto?", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Não", style: .default) { action in
+                self.dismiss(animated: true, completion: nil)
+            })
+            
+            alert.addAction(UIAlertAction(title: "Sim", style: .destructive) { action in
+                
+                let product = self.fetchedResultController.object(at: indexPath)
+                self.context.delete(product)
+                
+                do {
+                    try self.context.save()
+                } catch {
+                    print(error.localizedDescription)
+                }
+                
+            })
+            
+            self.present(alert, animated: true)
+            
         }
     }
     
